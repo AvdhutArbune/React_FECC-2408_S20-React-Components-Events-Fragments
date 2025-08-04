@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website</title>
+</head>
+<style>
+    /* Container for user cards */
+    .user-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+        
+    }
+
+    /* Each user card */
+    .user-list--item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background-color: #f5f5f5;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+
+    .user-list--item:hover {
+        transform: scale(1.02);
+    }
+
+    .user-list--item img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+
+    }
+
+    .user-list--item h2 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    /* Responsive: 2 columns for tablets, 3 for desktop */
+    @media (min-width: 600px) {
+        .user-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 900px) {
+        .user-list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>
+
+<body>
+    <div class="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.querySelector('.root')
+
+    function UserProfile(props) {
+        let username = props.username
+        let img = props.img
+
+        return <div className="user-list--item">
+            <img src={img} alt={username} />
+            <h2>{username}</h2>
+        </div>
+    }
+    function App() {
+        return (
+            <div className="user-list">
+
+                <UserProfile username="George Bluth" img="https://reqres.in/img/faces/1-image.jpg" />
+
+                <UserProfile username="Janet Weaver" img="https://reqres.in/img/faces/2-image.jpg" />
+
+                <UserProfile username="Emma Wong" img="https://reqres.in/img/faces/3-image.jpg" />
+            </div>
+        );
+    }
+    ReactDOM.createRoot(root).render(<App />)
+
+</script>
+
+</html>
