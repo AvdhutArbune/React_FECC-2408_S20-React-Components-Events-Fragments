@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        padding: 10px;
+        background-color: #f4f4f4;
+    }
+
+    .parent {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .parent>div {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        max-width: 300px;
+        text-align: center;
+        flex: 1 1 250px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    h3 {
+        margin: 10px 0 5px;
+        font-size: 1.2rem;
+    }
+
+    h5 {
+        color: #444;
+        font-size: 1rem;
+    }
+
+    @media screen and (max-width: 600px) {
+        .parent {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .parent>div {
+            width: 90%;
+        }
+    }
+</style>
+
+<body>
+    <div class="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.querySelector('.root')
+    function Hotels(props) {
+        let { hotelName, price, imgUrl } = props
+        return (
+            <div>
+                <img src={imgUrl} alt={hotelName} />
+                <h3>{hotelName}</h3>
+                <h5>{price}</h5>
+            </div>
+        )
+    }
+
+    function App() {
+        return (
+            <div class="parent">
+                <Hotels hotelName='Taj' imgUrl='https://content.jdmagicbox.com/v2/comp/mumbai/b2/022pxx22.xx22.240314175959.h8b2/catalogue/taj-mahal-tower-apollo-bunder-mumbai-hotels-0m7u7gnmsk.jpg' price='500$' />
+                <Hotels hotelName='Oberoy' imgUrl='https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/21/20/c9/facadenight.jpg?w=1200&h=-1&s=1' price='350$' />
+                <Hotels hotelName='Marriot' imgUrl='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQKgF6myOQsy9qn3tdCoYZivYCowLs6eCjVA&s' price='100$' />
+            </div>
+        )
+    }
+
+    ReactDOM.createRoot(root).render(<App />)
+</script>
+
+</html>
