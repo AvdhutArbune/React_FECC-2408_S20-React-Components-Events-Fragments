@@ -72,8 +72,7 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.querySelector('.root')
-    function Hotels(props) {
-        let { hotelName, price, imgUrl } = props
+    function Hotels({ hotelName, price, imgUrl }) {
         return (
             <div>
                 <img src={imgUrl} alt={hotelName} />
