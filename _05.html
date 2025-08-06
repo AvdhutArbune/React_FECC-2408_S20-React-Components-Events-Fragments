@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.querySelector('.root')
+    function Task({ taskname, checked, message }) {
+        return (
+            <>
+                <input type="checkbox" id={taskname} defaultChecked={checked} />
+                <label for={taskname}>{taskname}</label>
+            </>
+        )
+    }
+    function App() {
+        return (
+            <div>
+                <Task taskname='Waking Up Early' checked={true} /><br />
+                <Task taskname='Brush the Teeth' checked={true} /><br />
+                <Task taskname='Take a bath' checked={true} /><br />
+                <Task taskname='Go to the office' checked={true} /><br />
+                <Task taskname='Make Lunch' checked={false} />
+
+            </div>
+        )
+    }
+
+
+    ReactDOM.createRoot(root).render(<App />)
+</script>
+
+</html>
